@@ -1,8 +1,9 @@
-body{
+.home-div{
     background-image: url('../../images/dust_texture.png');
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Roboto', sans-serif;
+    height: 100vh;
 }
 
 li{
