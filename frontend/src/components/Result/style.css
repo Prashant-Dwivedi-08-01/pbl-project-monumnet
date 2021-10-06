@@ -1,0 +1,19 @@
+
+.map-container {
+    width: 100%;
+    height: 700px;
+}
+
+ .result-div{
+     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.monument-info{
+   margin-bottom: 20px;
+  
+}

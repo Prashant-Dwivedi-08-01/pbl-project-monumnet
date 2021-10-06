@@ -1,30 +1,26 @@
-//Importing the Modules
-var express = require('express')
-const path = require('path');
-const fetch = require("node-fetch");
-var cors = require('cors') //Use this Package to know More:  https://www.npmjs.com/package/cors
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import moumentRoutes from "./routes/index.js";
 
-//Creating the Express App.
-var app = express()
-// EXPRESS RELATED STUFF
-app.use("/static", express.static("static"));// For serving static files
-app.use(express.urlencoded()) //is a method inbuilt in express to recognize the incoming Request Object as strings or arrays. This method is called as a middleware in your application using the code: app. use(express.
-app.use(cors())//To mangage the Cross Origin Request Error.
+dotenv.config();
 
+const app = express();
+app.use(express.json({limit: "30mb", extended: true}));
+app.use(express.urlencoded({ limit: "30mb", extended: true}));
+app.use(cors());
 
-//Template Engine RELATED STUFF
-// app.set("view engine", "pug");// Set the template engine as pug
-app.set('view engine', 'html');
-app.set('views', path.join(__dirname, 'views'))// Set the views directory
-app.engine('html', require('ejs').renderFile);
-
-//Serving the URLs
-app.get("/", (req, res) => {
-    res.render("index.html")
+app.get('/', (req, res) => {
+    res.send("Welcome");
 })
 
-//Starting the Server
-app.listen(80, function () {
-    console.log('CORS-enabled web server listening on port 80')
-})
+app.use('/monument', moumentRoutes);
 
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology:  true})
+    .then(() => app.listen(PORT, () => console.log(`Server is running on port ${PORT}`)))
+    .catch((error) => console.log(error.message));
+
+// mongoose.set('useFindAndModify', false);

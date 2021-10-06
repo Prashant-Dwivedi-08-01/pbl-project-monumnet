@@ -1,0 +1,50 @@
+.game-div{
+    background-image: linear-gradient( black, whitesmoke);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+}
+
+.hint{
+    margin-top: 40px;
+    padding: 10px;
+    color: rgb(82, 0, 0);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Gluten', cursive;
+    width: 85%;
+    text-align: center;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    background: linear-gradient(rgb(250, 152, 5),yellow);
+    animation-name: hintLi;
+    animation-duration: 1s;
+    
+}
+@keyframes hintLi {
+    from {width: 100px;font-size: 2px;}
+    to {width: 85%;font-size: 20px;}
+}
+
+
+
+#options-form{
+    height: 140px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+   
+}
+
+.options-value{
+    width: 250px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    background: linear-gradient(rgb(97, 90, 79),yellow);
+    margin: 16px;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}

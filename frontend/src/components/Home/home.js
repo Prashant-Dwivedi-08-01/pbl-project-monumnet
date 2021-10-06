@@ -3,12 +3,19 @@ import monuments from '../../images/monuments.jpg'
 import logo from '../../images/logo.jpg'
 import './style.css'
 import { useHistory } from 'react-router-dom'
+import { getMonument } from '../../actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Home() {
     const history = useHistory();
+    const dispatch = useDispatch();
     
+    const name = 'Taj Mahal';
     const handlePlay = () => {
-        history.push('/game')
+        dispatch(getMonument(name, 0));
+        history.push({
+            pathname: '/game',
+        });
     }
 
     function openNav() {
@@ -23,7 +30,7 @@ export default function Home() {
             document.getElementById("mySidenav").style.width = "0";
     }
     return (
-        <div>
+        <div className="home-div">
 
             {/* NAV BAR WITH LOG AND SLIDER */}
             <div id="homeHeadder">
